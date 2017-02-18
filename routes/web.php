@@ -18,3 +18,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('sales','SalesController');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('sales','SalesController@index');
+});
+
+Route::group(['prefix' => 'api/v1','namespace' => 'Api'], function($app)
+{
+    Route::get('sales','SalesController@index');
+
+	Route::get('sales/{id}','SalesController@getSales');
+
+	Route::post('sales','SalesController@createSales');
+
+	Route::put('sales/{id}','SalesController@updateSales');
+
+	Route::delete('sales/{id}','SalesController@deleteSales');
+});

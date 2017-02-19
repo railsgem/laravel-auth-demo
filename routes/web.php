@@ -23,6 +23,9 @@ Route::resource('sales','SalesController');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('sales','SalesController@index');
+    Route::get('sales/create','SalesController@create');
+    Route::post('sales/store','SalesController@store');
+
 });
 
 Route::group(['prefix' => 'api/v1','namespace' => 'Api'], function($app)

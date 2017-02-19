@@ -113,6 +113,7 @@
     <script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
 
+
     <!-- page script -->
     <script type="text/javascript">
         // To make Pace works on Ajax calls
@@ -133,6 +134,26 @@
             $(this).parents('li').addClass('active');
           }
         });
+    </script>
+
+    <!-- DATA TABLES SCRIPT -->
+    <script src="/vendor/adminlte/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="/vendor/adminlte/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+    <!-- page script -->
+    <script>
+
+    jQuery(document).ready(function($){
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
     </script>
 
     @include('backpack::inc.alerts')

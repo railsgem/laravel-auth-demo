@@ -51,17 +51,28 @@ class SalesController extends Controller{
         $this->validate($request, [
             'sales_person_name' => 'required|max:255'
         ]);
-        // DB::table('os_store')->insert(
-        //     array('store_name' => $request->store_name,
-        //           'sort' => $request->sort,
-        //           'weight_value' => $request->weight_value
-        //           )
-        // );
         $Sales = Sales::create($request->all());
         Session::flash('flash_message', 'Store successfully Added!');
         return redirect('/admin/sales');
     }
 
+    /**
+     * Destroy the given store.
+     *
+     * @param  Request  $request
+     * @param  Store  $store
+     * @return Response
+     */
+    public function delete($id)
+    {
+        if($id){
+            $Sales  = Sales::find($id);
+            $Sales->delete();
+            Session::flash('flash_message', 'Store successfully Deleted!');
+        }
+
+        return redirect('/admin/sales');
+    }
     // public function getSales($id){
     //
     //     $Sales  = Sales::find($id);

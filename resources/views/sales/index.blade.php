@@ -39,16 +39,18 @@
                 <tbody>
                  @if(count($sales)>0)
                      @foreach ($sales as $store_item)
-                     <!-- <?php var_dump($store_item) ?> -->
                      <tr role="row" class="odd">
                          <td>{{$store_item->sales_person_name}}</td>
                          <td>{{$store_item->name_of_cafe}}</td>
                          <td>{{$store_item->name_of_cafe}}</td>
                          <td>{{$store_item->contact_number}}</td><!-- Single edit button -->
-                     	<td><a href="http://127.0.0.1:8000/admin/user/1/edit" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit</a>
-                             <a href="http://127.0.0.1:8000/admin/user/1" class="btn btn-xs btn-default" data-button-type="delete"><i class="fa fa-trash"></i> Delete</a>
-                         </td>
+                     	<td><a href="/admin/sales/{{$store_item->id}}/edit" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#delete_sales_<?php echo $store_item->id;?>"><i class="fa ion-trash-a"></i> Delete</a>
+
+                             @include('sales.delete')
+                        </td>
                      </tr>
+
                      @endforeach
                  @else
                  <tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">No data available in table</td></tr></tbody>
@@ -75,46 +77,3 @@
 
 
 @endsection
-
-<!-- jQuery 2.2.3 -->
-<script src="/vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="/vendor/adminlte/bootstrap/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="/vendor/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/vendor/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="/vendor/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="/vendor/adminlte/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="/vendor/adminlte/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/vendor/adminlte/dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-
-jQuery(document).ready(function($){
-  $("#example1").DataTable();
-  $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false
-  });
-});
-
-  // $(function () {
-  //   $("#example1").DataTable();
-  //   $('#example2').DataTable({
-  //     "paging": true,
-  //     "lengthChange": false,
-  //     "searching": false,
-  //     "ordering": true,
-  //     "info": true,
-  //     "autoWidth": false
-  //   });
-  // });
-</script>

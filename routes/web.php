@@ -26,6 +26,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('sales/create','SalesController@create');
     Route::post('sales/store','SalesController@store');
     Route::delete('/sales/{id}', 'SalesController@delete');
+    Route::get('/sales/edit/{id}', 'SalesController@edit');
+    Route::post('/sales/update/{store_id}','SalesController@update');
 
 
 });

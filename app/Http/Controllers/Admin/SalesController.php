@@ -73,6 +73,49 @@ class SalesController extends Controller{
 
         return redirect('/admin/sales');
     }
+
+    /**
+     * Edit the given store.
+     *
+     * @param  Request  $request
+     * @param  Store  $store
+     * @return Response
+     */
+    public function edit($id)
+    {
+        if($id){
+            $sales_item  = Sales::find($id);
+        }
+        return view('sales.edit',compact('sales_item'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        // $this->validate($request, [
+        //     'sales_person_name' => 'required|max:255',
+        //     'sort' => 'required|integer',
+        //     'weight_value' => 'required|integer',
+        // ]);
+
+        $Sales  = Sales::find($id);
+        $Sales->sales_person_name = $request->input('sales_person_name');
+        $Sales->name_of_cafe = $request->input('name_of_cafe');
+        $Sales->street = $request->input('street');
+        $Sales->suburb = $request->input('suburb');
+        $Sales->postcode = $request->input('postcode');
+        $Sales->pos = $request->input('pos');
+        $Sales->contact_person = $request->input('contact_person');
+        $Sales->contact_number = $request->input('contact_number');
+        $Sales->Email = $request->input('email');
+        $Sales->Website = $request->input('website');
+        $Sales->Comment = $request->input('comment');
+        $Sales->level_of_interest = $request->input('level_of_interest');
+        $Sales->save();
+
+        return redirect('/admin/sales');
+        // return redirect()->back()->withInput();
+    }
+
     // public function getSales($id){
     //
     //     $Sales  = Sales::find($id);

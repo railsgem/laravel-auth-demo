@@ -44,7 +44,7 @@
                          <td>{{$store_item->name_of_cafe}}</td>
                          <td>{{$store_item->name_of_cafe}}</td>
                          <td>{{$store_item->contact_number}}</td><!-- Single edit button -->
-                     	<td><a href="/admin/sales/{{$store_item->id}}/edit" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit</a>
+                     	<td><a href="/admin/sales/edit/{{$store_item->id}}" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit</a>
                             <a class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#delete_sales_<?php echo $store_item->id;?>"><i class="fa ion-trash-a"></i> Delete</a>
 
                              @include('sales.delete')
